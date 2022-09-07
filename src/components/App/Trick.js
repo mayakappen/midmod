@@ -1,15 +1,16 @@
 import React from 'react'
 
-class Trick extends Component {
-    constructor(props) {
-        super(props) 
-            this.state = {
-                stance: props.stance,
-                name: props.name,
-                obstacle: props.obstacle,
-                tutorial: props.tutorial,
-                id: props.id
-            }
-    }
-    
+const Trick = ({ id, name, stance, obstacle, tutorial }) => {
+    return <div>
+        <h1>{name}</h1>
+        <ul>
+            <li>{stance}</li>
+            <li>{obstacle}</li>
+            <li>{tutorial}</li>
+        </ul>
+    </div>
 }
+
+
+
+export default Trick;
