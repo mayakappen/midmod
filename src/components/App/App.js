@@ -2,22 +2,25 @@ import { Component } from 'react';
 import './App.css';
 
 class App extends Component {
-      state = {
-      tricks: []
+  constructor() {
+    super()
+      this.state = {
+      tricks: null
     }
-  fetchTricks() {
-    fetch('http://localhost:3001/api/v1/tricks')
-      .then(resp => resp.json())
-      .then((obj) => {
-        this.setState({
-          tricks: obj
+  } 
+  componentDidMount() {
+      fetch('http://localhost:3001/api/v1/tricks')
+        .then((res) => {
+        return  res.json()
         })
-      })
+        .then((arr) => this.setState({tricks: arr}))
+        .catch(err => console.log(err))
     }
   render() {
     return (
       <div className="App">
         <h1>Sick Trick Wish List</h1>
+        <p>{this.state.tricks}</p>
       </div>
     );
   }
